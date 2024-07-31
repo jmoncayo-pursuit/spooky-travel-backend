@@ -9,8 +9,6 @@ Welcome to the Spooky Travel backend API! This project provides the backend func
 - [Usage](#usage)
 - [Endpoints](#endpoints)
 - [Database Setup](#database-setup)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 

@@ -49,7 +49,9 @@ reviews.put('/:id', async (req, res) => {
 
 reviews.post('/', async (req, res) => {
   try {
-    const review = await newReview(req.body);
+    const { tour_id } = req.params;
+    const reviewData = { tour_id, ...req.body };
+    const review = await newReview(reviewData);
     res.json(review);
   } catch (error) {
     res.status(400).json({ error: error });

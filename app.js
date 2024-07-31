@@ -18,7 +18,10 @@ app.get('/', (req, res) => {
 });
 
 const toursController = require('./controllers/toursController');
+const reviewsController = require('./controllers/reviewsController'); 
+
 app.use('/tours', toursController);
+app.use('/tours/:tour_id/reviews', reviewsController); 
 
 // 404 PAGE
 app.get('*', (req, res) => {

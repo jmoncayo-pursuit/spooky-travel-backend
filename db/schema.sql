@@ -20,5 +20,5 @@ CREATE TABLE spooky_reviews (
  title TEXT,
  content TEXT,
  rating NUMERIC CHECK (rating >= 0 AND rating <= 5),
- tour_id INTEGER REFERENCES tours (id) ON DELETE CASCADE
+ tour_id INTEGER NOT NULL REFERENCES tours (id) ON DELETE CASCADE
 );

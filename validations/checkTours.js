@@ -29,7 +29,7 @@ const checkName = (req, res, next) => {
 
 const validateURL = (req, res, next) => {
   const { url } = req.body;
-  const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+  const regex = /^[^ "]+\.[^ "]+$/;
   if (!url || regex.test(url)) {
     next();
   } else {

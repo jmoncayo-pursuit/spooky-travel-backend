@@ -10,7 +10,7 @@ INSERT INTO tours (name, description, url, category, is_favorite) VALUES
 ('New Orleans Ghost Adventures', 'Embark on a spooky walking tour through the French Quarter.', 'https://www.ghostcitytours.com/new-orleans/', 'Tour', TRUE),
 ('Waverly Hills Sanatorium', 'Experience the paranormal activity of a former tuberculosis sanatorium.', 'https://www.whslegends.com/', 'Historical', TRUE),
 ('Catacombs of Paris', 'Descend into the underground tunnels lined with millions of skeletons.', 'https://www.catacombes.paris.fr/en', 'Historical', TRUE),
-('Aokigahara "Suicide Forest"', 'Hike through the eerie and desolate forest at the base of Mount Fuji.', 'https://www.japan-guide.com/e/e5210.html', 'Nature', TRUE);
+('Aokigahara "Scary Forest"', 'Hike through the eerie and desolate forest at the base of Mount Fuji.', 'https://www.japan-guide.com/e/e5210.html', 'Nature', TRUE);
 
 -- Seed Data for spooky_reviews table
 INSERT INTO spooky_reviews (tour_id, reviewer, title, content, rating) VALUES

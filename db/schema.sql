@@ -10,8 +10,7 @@ CREATE TABLE tours (
  name TEXT NOT NULL,
  url TEXT,
  category TEXT,
- description TEXT,
- is_favorite BOOLEAN
+ description TEXT
 );
 
 CREATE TABLE spooky_reviews (

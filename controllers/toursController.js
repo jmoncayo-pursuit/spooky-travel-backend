@@ -1,10 +1,8 @@
-// controllers/toursController.js
 const express = require('express');
 const router = express.Router();
 const db = require('../db/dbConfig');
 const {
-  checkBoolean,
-  checkName,
+  checkName, // Assuming you still want to check for name
   validateURL,
 } = require('../validations/checkTours');
 
@@ -33,45 +31,33 @@ router.get('/:id', async (req, res) => {
 });
 
 // Create Route
-router.post(
-  '/',
-  checkBoolean,
-  checkName,
-  validateURL,
-  async (req, res) => {
-    const { name, description, url, is_favorite } = req.body;
-    try {
-      const newTour = await db.one(
-        'INSERT INTO tours (name, description, url, is_favorite) VALUES ($1, $2, $3, $4) RETURNING *',
-        [name, description, url, is_favorite]
-      );
-      res.status(201).json(newTour);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
+router.post('/', checkName, validateURL, async (req, res) => {
+  const { name, description, url } = req.body;
+  try {
+    const newTour = await db.one(
+      'INSERT INTO tours (name, description, url) VALUES ($1, $2, $3) RETURNING *',
+      [name, description, url]
+    );
+    res.status(201).json(newTour);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-);
+});
 
 // Update Route
-router.put(
-  '/:id',
-  checkBoolean,
-  checkName,
-  validateURL,
-  async (req, res) => {
-    const { id } = req.params;
-    const { name, description, url, is_favorite } = req.body;
-    try {
-      const updatedTour = await db.one(
-        'UPDATE tours SET name=$1, description=$2, url=$3, is_favorite=$4 WHERE id=$5 RETURNING *',
-        [name, description, url, is_favorite, id]
-      );
-      res.json(updatedTour);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
+router.put('/:id', checkName, validateURL, async (req, res) => {
+  const { id } = req.params;
+  const { name, description, url } = req.body;
+  try {
+    const updatedTour = await db.one(
+      'UPDATE tours SET name=$1, description=$2, url=$3 WHERE id=$4 RETURNING *',
+      [name, description, url, id]
+    );
+    res.json(updatedTour);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-);
+});
 
 // Delete Route
 router.delete('/:id', async (req, res) => {
